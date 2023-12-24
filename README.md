@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DigitalHippo
 
-## Getting Started
+## dependencies
 
-First, run the development server:
+- yarn create next-app --typescript
+- yarn add lucid-react
+- npx shadcn-ui@latest init
+- npx shadcn-ui@latest add button
+- npx shadcn-ui@latest add sheet
+- npx shadcn-ui@latest add separator
+- yarn add express
+- yarn add dotenv
+- yarn add payload
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## express Admin dashboard
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- add server.ts to /app directory and get-payload.ts
+  - can get path from 'path'
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## draw template
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- excalidraw.com
 
-## Learn More
+## prettify currency
 
-To learn more about Next.js, take a look at the following resources:
+- /lib/utils formatPrice
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## identifying when you click out of a section
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- use a useRef<HTMLDivElement | null>
+- can add ref prop to div
 
-## Deploy on Vercel
+## Event listener
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- These two things are the same
+  - document.addEventListener("keydown", handler)
+  - document.addEventListener("keydown", (e) => handler(e))
+- avoid memory leaks
+  - return () => document.removeEventListener("keydown", handler)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## shadcn
+
+- Select theme from website and copy css style in global.css
+- Can add buttonVariants() className to Link component to apply button style from styles we chose at the beginning
+  - className={buttonVariants({ variant: "ghost" })}
+- asChild disables components like SheetTrigger from trying to wrap all child elements as a button
+
+## lucide icons
+
+- ludice.dev has list of icons
+- Can add Icons component which ...props and can let you load in unique SVG's by defining their name
+
+## generics
+
+- useState<null | number> defines it can be null or a number
+
+## tailwind
+
+- making something absolute and then inset-x-0 makes left and right 0px which makes it effectively stretch full
+- sometimes parent div orients the content, next layer styles the shadow
+- flow-root
+  - puts element in unique block
+
+## typescript
+
+- define type example in NavItem.tsx
+
+## images
+
+- add object-cover and object-center
+
+## navbar
+
+- because parent is relative, child drop is down is absolute and since parent has defined height as well, we can say top-full on the children component and have it pushed directly under the navbar section
+
+## notes
+
+- MaxWidthWrapper creates custom wrapper to contain content
