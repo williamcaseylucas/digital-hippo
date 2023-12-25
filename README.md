@@ -11,6 +11,31 @@
 - yarn add express
 - yarn add dotenv
 - yarn add payload
+- yarn add cross-env
+- yarn add @payloadcms/richtext-slate @payloadcms/bundler-webpack @payloadcms/db-mongodb
+  - can also choose lexigal
+
+## Auth
+
+- we will capture token from email that is sent to /verify-email with ?token=<token>
+
+## Mongodb
+
+- connect with drivers since we are using node.js
+
+## self host
+
+- checkout server.ts to see an example of how to make next.js more flexible for things like websockets which vercel doesn't normally support
+- change in package.json dev command from this to this
+  - "dev": "next dev",
+  - 'dev': "cross-env PAYLOAD_CONFIG_PATH=app/payload.config.ts nodemon"
+
+## payload CMS
+
+- in /app/payload.config.ts
+- add nodemon.json in root directory
+- add tsconfig.server.json to root directory as well
+- payload.config.ts allows us to define the route (in this case /sell)
 
 ## express Admin dashboard
 
