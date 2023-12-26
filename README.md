@@ -18,10 +18,22 @@
   - can also choose lexigal
 - yarn add react-hook-form @hookform/resolvers zod sonner
 - yarn add @trpc/client @trpc/next @trpc/react-query @trpc/server @tanstack/react-query
+  - yarn add @tanstack/react-query@4.36.1
+
+## forms
+
+- You can either grab form input by attaching id's to elements and then putting an action={onSubmit} on the form tag where you have formData: FormData and you use formData.get() as string and then have some useAction hook to validate with zod that the types are correct
+- Or, you can use useForm which takes in a generic type (which gives info as to what should be passed in / returned) and 'useForm' accepts a zodResolver which does type safety from the server component directly
+  - You use onSubmit={handleSubmit(onSubmit)} on the form component with this method where handleSubmit was a prop from 'useForm' and onSubmit is a custom method we write
+  - If you {...register('email')} or 'password' in a prop, this identifies which components are which
 
 ## trpc
 
 - typescript for frontend and backend
+- create /trpc folder with files provided
+- add /app/api/trpc/[trpc]/route.ts that has a GET and POST handler
+- from client component, we can say const { data } = trpc.anyApiRoute.useQuery(); where anyApiRoute is defined within our index.ts in /trpc
+  - this allows for type safety for every query we make
 
 ## Sign up
 
@@ -36,6 +48,11 @@
 ## Auth
 
 - we will capture token from email that is sent to /verify-email with ?token=<token>
+
+## next.js
+
+- export { handler as GET, handler as POST };
+  - allows handler to recieve GET and POST requests
 
 ## Mongodb
 
@@ -107,6 +124,7 @@
 ## typescript
 
 - define type example in NavItem.tsx
+- PropsWithChildren is an interface that exists that enables you to avoid write {children}: {children: React.ReactNode}
 
 ## images
 
@@ -119,3 +137,4 @@
 ## notes
 
 - MaxWidthWrapper creates custom wrapper to contain content
+- trpc is not compataible with most recent of tanstack query so we have to downgrade from 5 to 4

@@ -8,13 +8,13 @@ import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import Link from "next/link";
 import React from "react";
 import {
   AuthCredentialValidator,
   TAuthCredentialsValidator,
 } from "@/lib/validators/account-credentials-validator";
+import { trpc } from "@/app/trpc/client";
 
 const SignUp = () => {
   const {
