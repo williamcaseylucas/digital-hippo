@@ -3,14 +3,24 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { slateEditor } from "@payloadcms/richtext-slate";
 import path from "path";
 import { buildConfig } from "payload/config";
+import { Users } from "./collections/Users";
+
+// Don't need this
+// import dotenv from "dotenv";
+
+// dotenv.config({
+//   path: path.resolve(__dirname, "../.env"),
+// });
 
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "",
-  collections: [],
+  collections: [Users],
   routes: {
     admin: "/sell",
   },
+  // Need to add this user: "users" because we added unique "users" collection property
   admin: {
+    user: "users",
     bundler: webpackBundler(),
     meta: {
       titleSuffix: "- DigitalHippo",

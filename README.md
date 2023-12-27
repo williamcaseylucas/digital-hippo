@@ -20,6 +20,12 @@
 - yarn add @trpc/client @trpc/next @trpc/react-query @trpc/server @tanstack/react-query
   - yarn add @tanstack/react-query@4.36.1
 
+## types
+
+- Users
+  - Seller
+  - Buyers
+
 ## forms
 
 - You can either grab form input by attaching id's to elements and then putting an action={onSubmit} on the form tag where you have formData: FormData and you use formData.get() as string and then have some useAction hook to validate with zod that the types are correct
@@ -34,6 +40,15 @@
 - add /app/api/trpc/[trpc]/route.ts that has a GET and POST handler
 - from client component, we can say const { data } = trpc.anyApiRoute.useQuery(); where anyApiRoute is defined within our index.ts in /trpc
   - this allows for type safety for every query we make
+- get-payload.ts
+- /app/collections has collections of Users (sellers and buyers)
+  - Add this to payload.config.ts to have extra options
+- in auth-router.ts, had to change from "@" path to fix problem. Added "../../" instead
+
+## collections
+
+- User
+  - Can add // condition: ({req}) => req.user.role === 'admin' to only have admins see the page, or false
 
 ## Sign up
 
