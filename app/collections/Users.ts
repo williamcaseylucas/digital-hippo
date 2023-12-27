@@ -2,7 +2,14 @@ import { CollectionConfig } from "payload/types";
 
 export const Users: CollectionConfig = {
   slug: "users",
-  auth: true,
+  // Could be just true, but this adds email verification
+  auth: {
+    verify: {
+      generateEmailHTML: ({ token }) => {
+        return `<a href='${process.env.NEXT_PUBLIC_SERVER_URL}/verify-email?token=${token}'>Verify account</a>`;
+      },
+    },
+  },
   access: {
     // all users can read all of this information
     read: () => true,

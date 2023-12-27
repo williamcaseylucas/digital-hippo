@@ -9,16 +9,32 @@
 - npx shadcn-ui@latest add sheet
 - npx shadcn-ui@latest add separator
 - npx shadcn-ui@latest add input
+- npx shadcn-ui@latest add dropdown-menu
 - npx shadcn-ui@latest add label
 - yarn add express
 - yarn add dotenv
 - yarn add payload
 - yarn add cross-env
+- yarn add sonner
 - yarn add @payloadcms/richtext-slate @payloadcms/bundler-webpack @payloadcms/db-mongodb
   - can also choose lexigal
 - yarn add react-hook-form @hookform/resolvers zod sonner
 - yarn add @trpc/client @trpc/next @trpc/react-query @trpc/server @tanstack/react-query
   - yarn add @tanstack/react-query@4.36.1
+- (run for types from our schema)
+  - yarn generate:types
+- yarn add nodemailer
+
+## sonner
+
+- Add <Toaster/> to layout.tsx
+
+## resend for emails (also Brevo looks nice)
+
+- email automatically sent via payload ORM through get-payload.ts
+- /collections/Users.ts defines message to send to "users" when they are created
+  - directs users to localhost:3000/verify-email?token=${token}
+  - if email link is clicked, token is generated
 
 ## types
 
@@ -44,11 +60,27 @@
 - /app/collections has collections of Users (sellers and buyers)
   - Add this to payload.config.ts to have extra options
 - in auth-router.ts, had to change from "@" path to fix problem. Added "../../" instead
+- automatically hashes password
+- auth-router.ts is where we are creating our callable methods on the frontend
+
+## payload-utls
+
+- Create custom component that gives us User verification as to whether or not they signed in
+
+## nodemon
+
+- anything you add to "watch" will be reloaded
 
 ## collections
 
 - User
   - Can add // condition: ({req}) => req.user.role === 'admin' to only have admins see the page, or false
+
+## Sign in
+
+- will have a ?as=seller url for sellers
+- router.push("?as=seller") just adds param to end
+- router.replace("/sign-in", undefined) makes "sign-in the route and takes off all other params
 
 ## Sign up
 
@@ -68,6 +100,7 @@
 
 - export { handler as GET, handler as POST };
   - allows handler to recieve GET and POST requests
+- can destructure searchParams from server component or access from front end via useSearchParams()
 
 ## Mongodb
 
@@ -140,6 +173,8 @@
 
 - define type example in NavItem.tsx
 - PropsWithChildren is an interface that exists that enables you to avoid write {children}: {children: React.ReactNode}
+- add to package.json "generate:types": "cross-env PAYLOAD_CONFIG_PATH=app/payload.config.ts payload generate:types"
+  - Then payload.config.ts will put this generated content where we defined payla-types.ts
 
 ## images
 

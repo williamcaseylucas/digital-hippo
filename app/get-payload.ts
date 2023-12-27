@@ -2,9 +2,23 @@ import dotenv from "dotenv";
 import path from "path";
 import payload, { Payload } from "payload";
 import { InitOptions } from "payload/config";
+import nodemailer from "nodemailer";
+
+// Where we create CMS instance
 
 // go from /app to main folder and then go to .env
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
+
+// get emails
+const transporter = nodemailer.createTransport({
+  host: "smtp.resend.com",
+  secure: true,
+  port: 465,
+  auth: {
+    user: "resend",
+    pass: process.env.RESEND_API_KEY,
+  },
+});
 
 let cached = (global as any).payload;
 
@@ -29,6 +43,12 @@ export const getPayloadClient = async ({
 
   if (!cached.promise)
     cached.promise = payload.init({
+      email: {
+        transport: transporter,
+        // Can only use the email you signed up with for this, add your own custom instead
+        fromAddress: "onboarding@resend.dev",
+        fromName: "DigitalHippo",
+      },
       secret: process.env.PAYLOAD_SECRET,
       local: initOptions?.express ? false : true,
       ...(initOptions || {}),

@@ -4,9 +4,14 @@ import { Icons } from "./Icons";
 import NavItems from "./NavItems";
 import { buttonVariants } from "@/components/ui/button";
 import Cart from "./Cart";
+import { getServerSideUser } from "@/lib/payload-utils";
+import { cookies } from "next/headers";
+import UserAccountNav from "./UserAccountNav";
 
-const Navbar = () => {
-  const user = null;
+const Navbar = async () => {
+  // checks if user has payload-cookie
+  const nextCookies = cookies();
+  const { user } = await getServerSideUser(nextCookies);
 
   // Makes it stick to the top of the page
   return (
@@ -46,7 +51,7 @@ const Navbar = () => {
                   )}
 
                   {user ? (
-                    <p></p>
+                    <UserAccountNav user={user} />
                   ) : (
                     <Link
                       href="/sign-up"
