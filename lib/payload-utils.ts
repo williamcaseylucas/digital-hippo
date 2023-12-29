@@ -8,7 +8,7 @@ export const getServerSideUser = async (
 ) => {
   const token = cookies.get("payload-token")?.value;
 
-  console.log("token", token);
+  // console.log("token", token);
 
   // our endpoint creates this itself
   const meRes = await fetch(

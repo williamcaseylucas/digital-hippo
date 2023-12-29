@@ -11,6 +11,7 @@
 - npx shadcn-ui@latest add input
 - npx shadcn-ui@latest add dropdown-menu
 - npx shadcn-ui@latest add label
+- npx shadcn-ui@latest add skeleton
 - yarn add express
 - yarn add dotenv
 - yarn add payload
@@ -24,6 +25,17 @@
 - (run for types from our schema)
   - yarn generate:types
 - yarn add nodemailer
+
+## js
+
+- can add files to object by indexing its key and it will create new assignments during runtime
+- flatMap() -> same as .map().flat()
+
+## tanstack
+
+- useQuery
+- useInfiniteQuery()
+  - grabs more content as you scroll
 
 ## sonner
 
