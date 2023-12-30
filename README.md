@@ -31,6 +31,15 @@
 - see which port is running on 3000
   - sudo lsof -i :3000
   - kill -9 9766
+- yarn add stripe
+
+## stripe
+
+- add secret key
+- logic in payment-router.ts
+- Create line_item in stripe dashboard
+  - copy API ID from "Create Product" page where you can add recurring or single time transaction
+- we made priceId and stripeId get generated programtically which is why we need to handle it in our beforeChange hook within Products collection
 
 ## how to size images properly
 

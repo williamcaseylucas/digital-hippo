@@ -7,6 +7,8 @@ import { PRODUCT_CATEGORIES } from "../config";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, Loader2, X } from "lucide-react";
+import { trpc } from "../trpc/client";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const { items, removeItem } = useCart();
@@ -14,6 +16,18 @@ const Page = () => {
     (total, { product }) => total + product.price,
     0
   );
+
+  const router = useRouter();
+
+  const { mutate: createCheckoutSession, isLoading } =
+    trpc.payment.createSession.useMutation({
+      onSuccess: ({ url }) => {
+        // Because url is returned at the end of our function
+        if (url) router.push(url);
+      },
+    });
+
+  const productIds = items.map(({ product }) => product.id);
 
   const fee = 1;
 
@@ -171,7 +185,15 @@ const Page = () => {
             </div>
 
             <div className="mt-6">
-              <Button className="w-full" size="lg">
+              <Button
+                disabled={items.length === 0 || isLoading}
+                onClick={() => createCheckoutSession({ productIds })}
+                className="w-full"
+                size="lg"
+              >
+                {isLoading && (
+                  <Loader2 className="w-4 h-4 animate-spin mr-1.5" />
+                )}
                 Checkout
               </Button>
             </div>
