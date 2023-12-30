@@ -10,6 +10,8 @@ export const paymentRouter = router({
     .input(z.object({ productIds: z.array(z.string()) }))
     .mutation(async ({ ctx, input }) => {
       const { user } = ctx;
+      console.log("user: ", user);
+      console.log("input: ", input);
 
       let { productIds } = input;
 
@@ -37,7 +39,7 @@ export const paymentRouter = router({
         collection: "orders",
         data: {
           isPaid: false,
-          products: filteredProducts,
+          products: filteredProducts.map((prod) => prod.id),
           user: user.id,
         },
       });
@@ -67,7 +69,7 @@ export const paymentRouter = router({
         const stripeSession = await stripe.checkout.sessions.create({
           success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId=${order.id}`,
           cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/cart`, // have them try again
-          payment_method_types: ["card", "paypal"],
+          payment_method_types: ["card"], // have to activate account first "paypal"
           mode: "payment",
           metadata: {
             userId: user.id,

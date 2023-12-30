@@ -33,6 +33,10 @@
   - kill -9 9766
 - yarn add stripe
 
+## Checkout process
+
+- once payment is made, we go to thank you page and keep polling the server to see isPaid is true
+
 ## stripe
 
 - add secret key
