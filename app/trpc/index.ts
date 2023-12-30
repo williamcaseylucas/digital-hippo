@@ -11,11 +11,12 @@ export const appRouter = router({
     .input(
       z.object({
         limit: z.number().min(1).max(100),
-        cursor: z.number().nullish(), // last element that was rendered
+        cursor: z.number().nullish(), // last element that was rendered (accepts null)
         query: QueryValidator,
       })
     )
     .query(async ({ input }) => {
+      // This is defined by our input above
       const { query, cursor } = input;
       const { sort, limit, ...queryOpts } = query; // put all other vals to queryOpts
 
@@ -32,6 +33,7 @@ export const appRouter = router({
 
       const page = cursor || 1;
 
+      //   ...parsedQueryOpts, // category: string
       const {
         docs: items,
         hasNextPage,
@@ -42,13 +44,15 @@ export const appRouter = router({
           approvedForSale: {
             equals: "approved",
           },
-          ...parsedQueryOpts,
         },
         sort,
         depth: 1,
         limit,
         page,
       });
+
+      // console.log("these are the items! ", items);
+      // console.log("these are the items! ", items[0].id);
 
       return {
         items,

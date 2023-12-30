@@ -50,6 +50,7 @@ const NavItems = () => {
             handleOpen={handleOpen}
             isOpen={isOpen}
             isAnyOpen={isAnyOpen}
+            key={i}
           />
         );
       })}

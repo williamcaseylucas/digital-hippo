@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { Product } from "../payload-types";
 import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
 import { PRODUCT_CATEGORIES } from "../config";
+import ImageSlider from "./ImageSlider";
 
 // Important from AIRBNB file storage
 interface ProductListingProps {
@@ -15,10 +16,6 @@ interface ProductListingProps {
 
 const ProductListing = ({ product, index }: ProductListingProps) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
-
-  if (!product || !isVisible) return <ProductPlaceholder />;
-
-  // USEEFFECT NOT WORKING FOR SOME REASON
 
   // stagger the images to load one after the other
   useEffect(() => {
@@ -30,10 +27,18 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
     return () => clearTimeout(timer);
   }, [index]);
 
+  if (!product || !isVisible) return <ProductPlaceholder />;
+
   // get label that is the category which is mapped to the value, and return the label instead
   const label = PRODUCT_CATEGORIES.find(
     ({ value }) => value === product.category
   )?.label;
+
+  // Make sure undefined and null are factored out by casting as Boolean and then as string[] array
+  // either string image or Media type with image.url being string
+  const validUrls = product.images
+    .map(({ image }) => (typeof image === "string" ? image : image.url))
+    .filter(Boolean) as string[];
 
   if (isVisible && product) {
     return (
@@ -44,10 +49,14 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
         href={`/product/${product.id}`}
       >
         <div className="flex flex-col w-full">
+          <ImageSlider urls={validUrls} />
           <h3 className="mt-4 font-medium text-sm text-gray-700">
             {product.name}
           </h3>
           <p className="mt-1 text-sm text-gray-500">{label}</p>
+          <p className="mt-1 font-medium text-sm text-gray-900">
+            {formatPrice(product.price)}
+          </p>
         </div>
       </Link>
     );

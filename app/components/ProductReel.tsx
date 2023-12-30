@@ -32,6 +32,15 @@ const ProductReel = (props: ProductReelProps) => {
   // Same as .map().flatten()
   const products = queryResults?.pages.flatMap((page) => page.items);
 
+  // queryResults?.pages.forEach(({ items }) => {
+  //   console.log("this is an item", items[0].id);
+  //   console.log("this is an item", items[0].name);
+  //   console.log("this is an item", items[0].description);
+  // });
+  // console.log(queryResults?.pages[0].items[0].id);
+
+  // console.log("products.name", products?.);
+
   // Map of Products with 'categories' that should be matched to 'values' from PRODUCTCATEGORIES
   let map: (Product | null)[] = [];
 
@@ -71,7 +80,11 @@ const ProductReel = (props: ProductReelProps) => {
         <div className="mt-6 flex items-center w-full">
           <div className="w-full grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-10 lg:gap-x-8">
             {map.map((product, i) => (
-              <ProductListing product={product} index={i} />
+              <ProductListing
+                product={product}
+                index={i}
+                key={`product-${i}`}
+              />
             ))}
           </div>
         </div>

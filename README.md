@@ -12,6 +12,7 @@
 - npx shadcn-ui@latest add dropdown-menu
 - npx shadcn-ui@latest add label
 - npx shadcn-ui@latest add skeleton
+- npx shadcn-ui@latest add scroll-area
 - yarn add express
 - yarn add dotenv
 - yarn add payload
@@ -25,11 +26,33 @@
 - (run for types from our schema)
   - yarn generate:types
 - yarn add nodemailer
+- yarn add swiper
+- yarn add zustand
+- see which port is running on 3000
+  - sudo lsof -i :3000
+  - kill -9 9766
+
+## how to size images properly
+
+- /app/cart/page.tsx
+
+## zustand -> cart logic
+
+- create custom hook that is used in AddToCart and /app/product/[productId] and Cart.tsx
+- any react hooks require 'use client'
+- add <ScrollArea> to make smooth
+
+## swiper
+
+- add css styles to components where it is used
+- added extra styles in global.css for circle to turn from blue to white
 
 ## js
 
 - can add files to object by indexing its key and it will create new assignments during runtime
 - flatMap() -> same as .map().flat()
+- .reduce is good when we want to go over an array and keep adding a total from a previous component
+  - example in .Cart.tsx
 
 ## tanstack
 
@@ -187,6 +210,8 @@
 - PropsWithChildren is an interface that exists that enables you to avoid write {children}: {children: React.ReactNode}
 - add to package.json "generate:types": "cross-env PAYLOAD_CONFIG_PATH=app/payload.config.ts payload generate:types"
   - Then payload.config.ts will put this generated content where we defined payla-types.ts
+- to remove undefined | null
+  - Make sure undefined and null are factored out by casting as Boolean and then as string[] array
 
 ## images
 
