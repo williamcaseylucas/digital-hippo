@@ -14,10 +14,14 @@
 - npx shadcn-ui@latest add skeleton
 - npx shadcn-ui@latest add scroll-area
 - yarn add express
+- yarn add date-fns
 - yarn add dotenv
 - yarn add payload
 - yarn add cross-env
+- yarn add resend (for email)
 - yarn add sonner
+- yarn add @react-email/components
+- yarn add body-parser
 - yarn add @payloadcms/richtext-slate @payloadcms/bundler-webpack @payloadcms/db-mongodb
   - can also choose lexigal
 - yarn add react-hook-form @hookform/resolvers zod sonner
@@ -32,6 +36,29 @@
   - sudo lsof -i :3000
   - kill -9 9766
 - yarn add stripe
+- yarn lint
+  - check to see if any code is going to cause an issue
+
+## Build
+
+- Change tsconfig module to "CommonJS" and moduleResolution to "node"
+- React refers to UMD global error
+  - import \* as React from 'react'
+- yarn add -D copyfiles
+
+## Get user
+
+- cookies() passed into getServerSideUser(cookies_param)
+
+## origin return meaning
+
+- /sign-in?origin=thank-you?orderId=${order.id}
+  - brings the user back to the origin page later (because of the logic we implemented)
+
+## align image on the left half
+
+- relative parent
+  - absolute child wrapped around Image with h defined and w-1/2
 
 ## Checkout process
 
@@ -44,6 +71,8 @@
 - Create line_item in stripe dashboard
   - copy API ID from "Create Product" page where you can add recurring or single time transaction
 - we made priceId and stripeId get generated programtically which is why we need to handle it in our beforeChange hook within Products collection
+- isPaid is defined in server.ts
+  - and further defined in webhooks.ts
 
 ## how to size images properly
 
@@ -70,8 +99,11 @@
 ## tanstack
 
 - useQuery
+  - {} represents object passed in for data
+  - {} has extra params for enabled and refetchInterval (PaymentStatus example)
 - useInfiniteQuery()
   - grabs more content as you scroll
+-
 
 ## sonner
 
@@ -83,6 +115,7 @@
 - /collections/Users.ts defines message to send to "users" when they are created
   - directs users to localhost:3000/verify-email?token=${token}
   - if email link is clicked, token is generated
+- can use email templates they have configured from demo.react.email
 
 ## types
 
@@ -229,6 +262,7 @@
 ## images
 
 - add object-cover and object-center
+- for <Image/> add 'fill' property
 
 ## navbar
 
