@@ -42,7 +42,7 @@ interface Args {
 export const getPayloadClient = async ({
   initOptions,
 }: Args = {}): Promise<Payload> => {
-  console.log("payloadsecret", process.env.PAYLOAD_SECRET);
+  // console.log("payloadsecret", process.env.PAYLOAD_SECRET);
   // Ensures JWT Token exists
   if (!process.env.PAYLOAD_SECRET) {
     throw new Error("PAYLOAD_SECRET is missing");
