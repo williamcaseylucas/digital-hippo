@@ -1,18 +1,19 @@
 import express from "express";
-import { getPayloadClient } from "./get-payload";
+import { getPayloadClient } from "../get-payload";
 import Stripe from "stripe";
 import stripe from "stripe";
 import { WebhookRequest } from "./server";
 import { Product } from "./payload-types";
 import { Resend } from "resend";
+import path from "path";
 import { ReceiptEmailHtml } from "./components/emails/ReceiptEmail";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const stripeWebhookHandler = async (
   req: express.Request,
   res: express.Response
 ) => {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   // Ensure we are getting request from Stripe
   const webhookRequest = req as any as WebhookRequest;
   const body = webhookRequest.rawBody;

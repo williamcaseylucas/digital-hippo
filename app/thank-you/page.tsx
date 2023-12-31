@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { getServerSideUser } from "@/lib/payload-utils";
 import { cookies } from "next/headers";
-import { getPayloadClient } from "../get-payload";
+import { getPayloadClient } from "../../get-payload";
 import { notFound, redirect } from "next/navigation";
 import { Product, ProductFile, User } from "../payload-types";
-import { PRODUCT_CATEGORIES } from "../config";
+import { PRODUCT_CATEGORIES } from "../../config";
 import { formatPrice } from "@/lib/utils";
 import Link from "next/link";
 import PaymentStatus from "../components/PaymentStatus";

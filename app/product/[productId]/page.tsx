@@ -2,7 +2,7 @@ import AddToCart from "@/app/components/AddToCart";
 import ImageSlider from "@/app/components/ImageSlider";
 import MaxWidthWrapper from "@/app/components/MaxWidthWrapper";
 import ProductReel from "@/app/components/ProductReel";
-import { PRODUCT_CATEGORIES } from "@/app/config";
+import { PRODUCT_CATEGORIES } from "@/config";
 import { getPayloadClient } from "@/app/get-payload";
 import { formatPrice } from "@/lib/utils";
 import { Check, Shield } from "lucide-react";

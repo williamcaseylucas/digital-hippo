@@ -14,7 +14,7 @@ import {
   AuthCredentialValidator,
   TAuthCredentialsValidator,
 } from "@/lib/validators/account-credentials-validator";
-import { trpc } from "@/app/trpc/client";
+import { trpc } from "@/trpc/client";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { ZodError } from "zod";

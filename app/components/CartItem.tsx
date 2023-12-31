@@ -1,7 +1,7 @@
 import { ImageIcon, X } from "lucide-react";
 import { Product } from "../payload-types";
 import Image from "next/image";
-import { PRODUCT_CATEGORIES } from "../config";
+import { PRODUCT_CATEGORIES } from "../../config";
 import { useCart } from "@/hooks/use-cart";
 import { formatPrice } from "@/lib/utils";
 

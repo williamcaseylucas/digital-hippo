@@ -35,7 +35,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReceiptEmailHtml = void 0;
-var utils_1 = require("@/lib/utils");
+var utils_1 = require("../../../lib/utils");
 var date_fns_1 = require("date-fns");
 var components_1 = require("@react-email/components");
 var React = __importStar(require("react")); // to fix build error

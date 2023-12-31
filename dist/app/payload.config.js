@@ -8,11 +8,11 @@ var db_mongodb_1 = require("@payloadcms/db-mongodb");
 var richtext_slate_1 = require("@payloadcms/richtext-slate");
 var path_1 = __importDefault(require("path"));
 var config_1 = require("payload/config");
-var Users_1 = require("./collections/Users");
-var Products_1 = require("./collections/Products/Products");
-var Media_1 = require("./collections/Media");
-var ProductFiles_1 = require("./collections/ProductFiles");
-var Orders_1 = require("./collections/Orders");
+var Users_1 = require("../collections/Users");
+var Products_1 = require("../collections/Products/Products");
+var Media_1 = require("../collections/Media");
+var ProductFiles_1 = require("../collections/ProductFiles");
+var Orders_1 = require("../collections/Orders");
 // Don't need this
 // import dotenv from "dotenv";
 // dotenv.config({

@@ -3,11 +3,11 @@ import { useCart } from "@/hooks/use-cart";
 import { cn, formatPrice } from "@/lib/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { PRODUCT_CATEGORIES } from "../config";
+import { PRODUCT_CATEGORIES } from "../../config";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, Loader2, X } from "lucide-react";
-import { trpc } from "../trpc/client";
+import { trpc } from "../../trpc/client";
 import { useRouter } from "next/navigation";
 
 const Page = () => {

@@ -5,7 +5,7 @@ import { Product } from "../payload-types";
 import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 import { cn, formatPrice } from "@/lib/utils";
-import { PRODUCT_CATEGORIES } from "../config";
+import { PRODUCT_CATEGORIES } from "../../config";
 import ImageSlider from "./ImageSlider";
 
 // Important from AIRBNB file storage

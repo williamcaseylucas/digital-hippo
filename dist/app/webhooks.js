@@ -40,17 +40,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.stripeWebhookHandler = void 0;
-var get_payload_1 = require("./get-payload");
+var get_payload_1 = require("../get-payload");
 var stripe_1 = __importDefault(require("stripe"));
 var resend_1 = require("resend");
 var ReceiptEmail_1 = require("./components/emails/ReceiptEmail");
-var resend = new resend_1.Resend(process.env.RESEND_API_KEY);
 var stripeWebhookHandler = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var webhookRequest, body, signature, event, session, payload, users, user, orders, order, data, error_1;
+    var resend, webhookRequest, body, signature, event, session, payload, users, user, orders, order, data, error_1;
     var _a, _b;
     return __generator(this, function (_c) {
         switch (_c.label) {
             case 0:
+                resend = new resend_1.Resend(process.env.RESEND_API_KEY);
                 webhookRequest = req;
                 body = webhookRequest.rawBody;
                 signature = req.headers["stripe-signature"] || "";

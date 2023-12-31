@@ -1,7 +1,7 @@
 "use client";
 
 import { Loader2, XCircle } from "lucide-react";
-import { trpc } from "../trpc/client";
+import { trpc } from "../../trpc/client";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";

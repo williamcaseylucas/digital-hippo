@@ -39,6 +39,10 @@
 - yarn lint
   - check to see if any code is going to cause an issue
 
+## deployment on railway
+
+- nah let's use Vercel
+
 ## Build
 
 - Change tsconfig module to "CommonJS" and moduleResolution to "node"
@@ -73,6 +77,8 @@
 - we made priceId and stripeId get generated programtically which is why we need to handle it in our beforeChange hook within Products collection
 - isPaid is defined in server.ts
   - and further defined in webhooks.ts
+- create custom webhook from dashboard
+  - Want to do this from our official production url
 
 ## how to size images properly
 

@@ -51,13 +51,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPayloadClient = void 0;
-var dotenv_1 = __importDefault(require("dotenv"));
 var path_1 = __importDefault(require("path"));
 var payload_1 = __importDefault(require("payload"));
 var nodemailer_1 = __importDefault(require("nodemailer"));
 // Where we create CMS instance
 // go from /app to main folder and then go to .env
-dotenv_1.default.config({ path: path_1.default.resolve(__dirname, "../.env") });
+// dotenv.config({ path: path.resolve(__dirname, "../.env") });
+console.log(path_1.default.resolve(__dirname));
+console.log(path_1.default.resolve(__dirname, "../.env"));
+console.log(process.env.RESEND_API_KEY);
+console.log(process.env.PAYLOAD_SECRET);
+console.log(process.env.NEXT_PUBLIC_RESEND_API_KEY);
+console.log(process.env.NEXT_PUBLIC_PAYLOAD_SECRET);
+// console.log(process.env);
 // get emails
 var transporter = nodemailer_1.default.createTransport({
     host: "smtp.resend.com",
@@ -80,6 +86,7 @@ var getPayloadClient = function (_a) {
         return __generator(this, function (_d) {
             switch (_d.label) {
                 case 0:
+                    console.log("payloadsecret", process.env.PAYLOAD_SECRET);
                     // Ensures JWT Token exists
                     if (!process.env.PAYLOAD_SECRET) {
                         throw new Error("PAYLOAD_SECRET is missing");
