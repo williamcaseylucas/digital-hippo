@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 import { IncomingMessage } from "http";
 import { stripeWebhookHandler } from "./webhooks";
 import nextBuild from "next/dist/build";
+import path from "path";
 
 // dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
