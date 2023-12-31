@@ -6,5 +6,5 @@
     "noEmit": false,
     "jsx": "react"
   },
-  "include": ["app/server.ts", "app/payload.config.ts"]
+  "include": ["./server.ts", "./payload.config.ts"]
 }

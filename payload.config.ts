@@ -3,11 +3,11 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { slateEditor } from "@payloadcms/richtext-slate";
 import path from "path";
 import { buildConfig } from "payload/config";
-import { Users } from "../collections/Users";
-import { Products } from "../collections/Products/Products";
-import { Media } from "../collections/Media";
-import { ProductFiles } from "../collections/ProductFiles";
-import { Orders } from "../collections/Orders";
+import { Users } from "./collections/Users";
+import { Products } from "./collections/Products/Products";
+import { Media } from "./collections/Media";
+import { ProductFiles } from "./collections/ProductFiles";
+import { Orders } from "./collections/Orders";
 
 // Don't need this
 // import dotenv from "dotenv";

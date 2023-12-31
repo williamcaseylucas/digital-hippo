@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/use-cart";
 import { useEffect, useState } from "react";
-import { Product } from "../payload-types";
+import { Product } from "../../payload-types";
 
 const AddToCart = ({ product }: { product: Product }) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);

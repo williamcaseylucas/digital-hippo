@@ -1,12 +1,12 @@
 import express from "express";
-import { getPayloadClient } from "../get-payload";
+import { getPayloadClient } from "./get-payload";
 import Stripe from "stripe";
 import stripe from "stripe";
 import { WebhookRequest } from "./server";
 import { Product } from "./payload-types";
 import { Resend } from "resend";
 import path from "path";
-import { ReceiptEmailHtml } from "./components/emails/ReceiptEmail";
+import { ReceiptEmailHtml } from "./app/components/emails/ReceiptEmail";
 
 export const stripeWebhookHandler = async (
   req: express.Request,

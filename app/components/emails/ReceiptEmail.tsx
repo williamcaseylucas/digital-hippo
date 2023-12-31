@@ -1,6 +1,6 @@
 import { formatPrice } from "../../../lib/utils";
 import { format } from "date-fns";
-import { Product } from "../../payload-types";
+import { Product } from "../../../payload-types";
 import {
   Body,
   Container,

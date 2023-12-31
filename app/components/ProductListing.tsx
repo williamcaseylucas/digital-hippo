@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Product } from "../payload-types";
+import { Product } from "../../payload-types";
 import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 import { cn, formatPrice } from "@/lib/utils";

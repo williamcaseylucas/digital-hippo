@@ -1,8 +1,8 @@
 import express from "express";
-import { getPayloadClient } from "../get-payload";
+import { getPayloadClient } from "./get-payload";
 import { nextApp, nextHandler } from "./next-utils";
 import * as trpcExpress from "@trpc/server/adapters/express";
-import { appRouter } from "../trpc";
+import { appRouter } from "./trpc";
 import { inferAsyncReturnType } from "@trpc/server";
 import bodyParser from "body-parser";
 import { IncomingMessage } from "http";
@@ -48,7 +48,7 @@ const start = async () => {
       payload.logger.info("Next.js is building for production");
 
       // @ts-expect-error
-      await nextBuild(path.join(__dirname, "../"));
+      await nextBuild(path.join(__dirname));
 
       process.exit();
     });

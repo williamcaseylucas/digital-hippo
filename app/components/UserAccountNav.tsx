@@ -8,7 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { User } from "../payload-types";
+import { User } from "../../payload-types";
 import Link from "next/link";
 import { useAuth } from "@/hooks/use-auth";
 

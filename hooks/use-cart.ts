@@ -5,7 +5,7 @@
 
 // For cart logic
 
-import { Product } from "@/app/payload-types";
+import { Product } from "../payload-types";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 

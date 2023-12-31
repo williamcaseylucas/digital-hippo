@@ -42,6 +42,9 @@
 ## deployment on railway
 
 - nah let's use Vercel
+- https://digital-hippo-im50b8kb2-william-runyons-projects.vercel.app/
+  - then add /api/webhooks/stripe because we defined it this way in server.ts
+  - checkout.session.completed
 
 ## Build
 
