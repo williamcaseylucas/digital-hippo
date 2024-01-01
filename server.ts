@@ -43,6 +43,10 @@ const start = async () => {
     },
   });
 
+  // protect cart route
+  const cartRouter = express.Router();
+  cartRouter.use(payload.authenticate); // attaches user object from payload to our express app
+
   if (process.env.NEXT_BUILD) {
     app.listen(PORT, async () => {
       payload.logger.info("Next.js is building for production");

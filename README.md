@@ -42,9 +42,10 @@
 ## deployment on railway
 
 - nah let's use Vercel
-- https://digital-hippo-im50b8kb2-william-runyons-projects.vercel.app/
+- https://digital-hippo-gilt.vercel.app/
   - then add /api/webhooks/stripe because we defined it this way in server.ts
   - checkout.session.completed
+- add build folder to be /dist/.next
 
 ## Build
 
