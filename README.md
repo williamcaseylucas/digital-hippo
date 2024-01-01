@@ -49,6 +49,7 @@
 - add build folder to be /dist/.next
 - copyfiles package .json:
   - removed app/\*\*
+- make sure in .server.ts that nextBuild has ../ included in path.join or else it won't build the routes dynamically
 
 ## Build
 
