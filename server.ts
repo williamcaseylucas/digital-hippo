@@ -9,6 +9,7 @@ import { IncomingMessage } from "http";
 import { stripeWebhookHandler } from "./webhooks";
 import nextBuild from "next/dist/build";
 import path from "path";
+import { PayloadRequest } from "payload/types";
 
 // dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
@@ -46,6 +47,10 @@ const start = async () => {
   // protect cart route
   const cartRouter = express.Router();
   cartRouter.use(payload.authenticate); // attaches user object from payload to our express app
+
+  cartRouter.get("/", (req, res) => {
+    const request = req as PayloadRequest;
+  });
 
   if (process.env.NEXT_BUILD) {
     app.listen(PORT, async () => {
