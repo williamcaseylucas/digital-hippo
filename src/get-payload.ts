@@ -7,8 +7,8 @@ import nodemailer from "nodemailer";
 // Where we create CMS instance
 
 // go from /app to main folder and then go to .env
-// { path: path.resolve(__dirname, "../.env") }
-dotenv.config();
+//
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 // console.log(path.resolve(__dirname));
 // console.log(path.resolve(__dirname, "../.env"));

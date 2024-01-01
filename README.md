@@ -47,6 +47,8 @@
   - also take off the '/' at the end when applying to the local host
   - checkout.session.completed
 - add build folder to be /dist/.next
+- copyfiles package .json:
+  - removed app/\*\*
 
 ## Build
 
