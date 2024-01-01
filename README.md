@@ -44,6 +44,7 @@
 - nah let's use Vercel
 - https://digital-hippo-gilt.vercel.app/
   - then add /api/webhooks/stripe because we defined it this way in server.ts
+  - also take off the '/' at the end when applying to the local host
   - checkout.session.completed
 - add build folder to be /dist/.next
 
