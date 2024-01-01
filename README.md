@@ -209,6 +209,7 @@
 - add nodemon.json in root directory
 - add tsconfig.server.json to root directory as well
 - payload.config.ts allows us to define the route (in this case /sell)
+- product-files and media are storing locally in the build
 
 ## express Admin dashboard
 

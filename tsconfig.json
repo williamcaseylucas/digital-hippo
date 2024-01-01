@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es5", //
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "CommonJS", // esnext
-    "moduleResolution": "node", // change from 'bundler'
+    "module": "CommonJS", // esnext -
+    "moduleResolution": "node", // change from 'bundler' -
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
