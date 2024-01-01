@@ -9,12 +9,14 @@ import { IncomingMessage } from "http";
 import { stripeWebhookHandler } from "./webhooks";
 import nextBuild from "next/dist/build";
 import path from "path";
+import dotenv from "dotenv";
 import { PayloadRequest } from "payload/types";
 
-// dotenv.config({ path: path.resolve(__dirname, "../.env") });
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
+console.log("PORT: ", process.env.PORT);
 
 const createContext = ({
   req,
