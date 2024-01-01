@@ -50,7 +50,8 @@
 - copyfiles package .json:
   - removed app/\*\*
 - make sure in .server.ts that nextBuild has ../ included in path.join or else it won't build the routes dynamically
-- build directory should be /dist/.next since we changed the output file
+- build directory should be .next this is where the build is being created
+  - can specify in next.config.js to be distDir: "dist/.next" but not necessary
 
 ## Build
 
