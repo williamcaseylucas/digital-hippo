@@ -9,7 +9,7 @@ export const useAuth = () => {
       // Don't have to create this endpoint
       const res = await fetch(
         // NEXT_PUBLIC
-        `${process.env.SERVER_URL}/api/users/logout`,
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/logout`,
         {
           method: "POST",
           credentials: "include",

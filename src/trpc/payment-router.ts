@@ -67,8 +67,8 @@ export const paymentRouter = router({
       // Checkout session -> then go to /Products.ts to see further implementation with hooks
       try {
         const stripeSession = await stripe.checkout.sessions.create({
-          success_url: `${process.env.SERVER_URL}/thank-you?orderId=${order.id}`,
-          cancel_url: `${process.env.SERVER_URL}/cart`, // have them try again
+          success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId=${order.id}`,
+          cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/cart`, // have them try again
           payment_method_types: ["card"], // have to activate account first "paypal"
           mode: "payment",
           metadata: {

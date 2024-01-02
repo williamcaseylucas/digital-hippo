@@ -10,6 +10,10 @@ const nextConfig = {
         port: "3000",
         protocol: "http",
       },
+      {
+        protocol: "https",
+        hostname: "digital-hippo.onrender.com",
+      },
     ],
   },
 };
