@@ -1,6 +1,7 @@
 # DigitalHippo
 
 ##
+
 - timestamp: 11:11
 
 ## dependencies
@@ -42,7 +43,20 @@
 - yarn lint
   - check to see if any code is going to cause an issue
 
-## deployment on railway
+## reducer
+
+- can pass in generic for "acc" type (collections/Products)
+
+## middleware
+
+- redirect users who are already logged in away from sign-in or sign-out pages
+- .next() just means to continue
+
+## Express
+
+- protect cart page to only be accessible to users who are authenticated in server.ts
+
+## deployment on render
 
 - nah let's use Vercel
 - https://digital-hippo-gilt.vercel.app/
@@ -53,8 +67,6 @@
 - copyfiles package .json:
   - removed app/\*\*
 - make sure in .server.ts that nextBuild has ../ included in path.join or else it won't build the routes dynamically
-- build directory should be .next this is where the build is being created
-  - can specify in next.config.js to be distDir: "dist/.next" but not necessary
 
 ## Build
 
@@ -269,6 +281,7 @@
 - sometimes parent div orients the content, next layer styles the shadow
 - flow-root
   - puts element in unique block
+- whitespace-nowrap -> ensures we don't wrap to the next line
 
 ## typescript
 

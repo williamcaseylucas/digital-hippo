@@ -8,7 +8,7 @@ import ProductListing from "./ProductListing";
 
 interface ProductReelProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   href?: string;
   query: TQueryValidator;
 }

@@ -11,6 +11,7 @@ import nextBuild from "next/dist/build";
 import path from "path";
 import dotenv from "dotenv";
 import { PayloadRequest } from "payload/types";
+import { parse } from "url";
 
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
@@ -46,13 +47,22 @@ const start = async () => {
     },
   });
 
-  // protect cart route
+  // protect cart page to only be accessible to users who are authenticated
   const cartRouter = express.Router();
   cartRouter.use(payload.authenticate); // attaches user object from payload to our express app
 
   cartRouter.get("/", (req, res) => {
+    // get user
     const request = req as PayloadRequest;
+
+    if (!request.user) return res.redirect("/sign-in?origin=cart");
+
+    const parsedUrl = parse(req.url, true);
+
+    return nextApp.render(req, res, "/cart", parsedUrl.query); // what to render when user is authenticated
   });
+
+  app.use("/cart", cartRouter);
 
   if (process.env.NEXT_BUILD) {
     app.listen(PORT, async () => {

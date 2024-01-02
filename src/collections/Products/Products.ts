@@ -1,7 +1,10 @@
-import { BeforeChangeHook } from "payload/dist/collections/config/types";
+import {
+  BeforeChangeHook,
+  AfterChangeHook,
+} from "payload/dist/collections/config/types";
 import { PRODUCT_CATEGORIES } from "../../config";
-import { CollectionConfig } from "payload/types";
-import { Product } from "../../payload-types";
+import { Access, CollectionConfig } from "payload/types";
+import { Product, User } from "../../payload-types";
 import { stripe } from "../../lib/stripe";
 
 const addUser: BeforeChangeHook<Product> = async ({ req, data }) => {
@@ -13,13 +16,81 @@ const addUser: BeforeChangeHook<Product> = async ({ req, data }) => {
   };
 };
 
+// Will update User with all the products we currently own via id's
+const syncUser: AfterChangeHook<Product> = async ({ req, doc }) => {
+  const fullUser = await req.payload.findByID({
+    collection: "users",
+    id: req.user.id,
+  });
+
+  if (fullUser && typeof fullUser === "object") {
+    const { products } = fullUser; // extra product array
+
+    // Either extracts id from Product object or assumes the string is an id itself
+    const allIds = [
+      ...(products?.map((prod) =>
+        typeof prod === "object" ? prod.id : prod
+      ) || []),
+    ];
+
+    // remove all duplicate ids
+    const createdProductIds = allIds.filter(
+      (id, index) => allIds.indexOf(id) === index
+    );
+
+    // updates the current products model with our created ids
+    const dataToUpdate = [...createdProductIds, doc.id];
+    await req.payload.update({
+      collection: "users",
+      id: fullUser.id,
+      data: {
+        products: dataToUpdate,
+      },
+    });
+  }
+};
+
+const isAdminOrHasAccess: Access = ({ req: { user: _user } }) => {
+  const user = _user as User | undefined;
+  if (!user) return false;
+
+  if (user.role === "admin") return true;
+
+  // skip over non-products (not sure why this would happen)
+  // return list of products
+  const userProductIDs = (user.products || []).reduce<Array<string>>(
+    (acc, product) => {
+      if (!product) return acc;
+
+      typeof product === "string" ? acc.push(product) : acc.push(product.id);
+
+      return acc;
+    },
+    []
+  );
+
+  // return products only if they are contained in your products you should have access to
+  return {
+    id: {
+      in: userProductIDs,
+    },
+  };
+};
+
 // media and product_files are two more tables being referenced
 export const Products: CollectionConfig = {
   slug: "products",
   admin: {
     useAsTitle: "name",
   },
+  access: {
+    // access your own stuff only
+    read: isAdminOrHasAccess,
+    update: isAdminOrHasAccess,
+    delete: isAdminOrHasAccess,
+  },
   hooks: {
+    afterChange: [syncUser],
     beforeChange: [
       addUser,
       async (args) => {
@@ -64,7 +135,6 @@ export const Products: CollectionConfig = {
       },
     ],
   },
-  access: {},
   fields: [
     {
       name: "user",
